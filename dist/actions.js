@@ -160,15 +160,18 @@ var updateTodo = function (req, res) { return __awaiter(void 0, void 0, void 0, 
 }); };
 exports.updateTodo = updateTodo;
 var deleteUser = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var user;
+    var user, user_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, typeorm_1.getRepository(User_1.User).findOne(req.params.id)];
             case 1:
                 user = _a.sent();
-                if (!user)
-                    throw new utils_1.Exception("No hay nada para hacer");
-                return [2 /*return*/, res.json(user)];
+                if (!!user) return [3 /*break*/, 2];
+                return [2 /*return*/, res.json({ msg: "Este usuario no existe" })];
+            case 2: return [4 /*yield*/, typeorm_1.getRepository(User_1.User)["delete"](req.params.id)];
+            case 3:
+                user_1 = _a.sent();
+                return [2 /*return*/, res.json(user_1)];
         }
     });
 }); };

@@ -42,5 +42,5 @@ router.put('/todos/user/:id', utils_1.safe(actions.updateTodo));
 router.post('/todos/user/:id', utils_1.safe(actions.createTodo));
 router.get('/todos/user', utils_1.safe(actions.getTodo));
 router.put('/todos/user/:id', utils_1.safe(actions.updateTodo));
-router["delete"]('/todos/user/:id', utils_1.safe(actions.deleteUser));
+router["delete"]('/user/:id', utils_1.safe(actions.deleteUser));
 exports["default"] = router;

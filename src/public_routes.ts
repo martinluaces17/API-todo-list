@@ -16,6 +16,5 @@ const router = Router();
 router.post('/user', safe(actions.createUser));
 router.post('/todos/user/:id', safe(actions.createTodo));
 router.put('/todos/user/:id', safe(actions.updateTodo));
-router.delete('/todos/user/:id', safe(actions.deleteUser));
 
 export default router;
