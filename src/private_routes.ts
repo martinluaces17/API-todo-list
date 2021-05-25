@@ -19,5 +19,10 @@ import * as actions from './actions';
 const router = Router();
 
 router.get('/user', safe(actions.getUsers));
-
+router.get('/todos/user/:id', safe(actions.getTodo));
+router.put('/todos/user/:id', safe(actions.updateTodo));
+router.post('/todos/user/:id', safe(actions.createTodo));
+router.get('/todos/user', safe(actions.getTodo));
+router.put('/todos/user/:id', safe(actions.updateTodo));
+router.delete('/todos/user/:id', safe(actions.deleteUser));
 export default router;

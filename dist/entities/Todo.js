@@ -24,43 +24,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 exports.__esModule = true;
-exports.User = void 0;
+exports.Todo = void 0;
 var typeorm_1 = require("typeorm");
-var Todo_1 = require("./Todo");
-var User = /** @class */ (function (_super) {
-    __extends(User, _super);
-    function User() {
+var User_1 = require("./User");
+var Todo = /** @class */ (function (_super) {
+    __extends(Todo, _super);
+    function Todo() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     __decorate([
         typeorm_1.PrimaryGeneratedColumn(),
         __metadata("design:type", Number)
-    ], User.prototype, "id");
+    ], Todo.prototype, "id");
     __decorate([
         typeorm_1.Column(),
         __metadata("design:type", String)
-    ], User.prototype, "first_name");
+    ], Todo.prototype, "label");
     __decorate([
         typeorm_1.Column(),
-        __metadata("design:type", String)
-    ], User.prototype, "last_name");
+        __metadata("design:type", Boolean)
+    ], Todo.prototype, "done");
     __decorate([
-        typeorm_1.Column({ unique: true }),
-        __metadata("design:type", String)
-    ], User.prototype, "email");
-    __decorate([
-        typeorm_1.Column(),
-        __metadata("design:type", String)
-    ], User.prototype, "password");
-    __decorate([
-        typeorm_1.OneToMany(function () { return Todo_1.Todo; }, function (todo) { return todo.user; }, {
-            cascade: true
-        }),
-        __metadata("design:type", Array)
-    ], User.prototype, "todos");
-    User = __decorate([
+        typeorm_1.ManyToOne(function () { return User_1.User; }, function (user) { return user.todos; }, { onDelete: "CASCADE" }),
+        __metadata("design:type", User_1.User)
+    ], Todo.prototype, "user");
+    Todo = __decorate([
         typeorm_1.Entity()
-    ], User);
-    return User;
+    ], Todo);
+    return Todo;
 }(typeorm_1.BaseEntity));
-exports.User = User;
+exports.Todo = Todo;
